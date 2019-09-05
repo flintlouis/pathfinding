@@ -11,7 +11,7 @@
 # define KEY_ESC		53
 # define KEY_SPACE		49
 
-# define OBSTACLES		5
+# define OBSTACLES		5.5
 # define GRID_COL		50
 # define GRID_ROWS		50
 # define HEIGHT			800

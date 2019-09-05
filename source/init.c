@@ -41,7 +41,7 @@ static void init_grid(t_mlx *mlx)
 		{
 			mlx->grid[i][j].loc = (t_point){i,j};
 			mlx->grid[i][j].neighbors = (t_node**)ft_memalloc(sizeof(t_node*) * 8);
-			if ((rand() % 10) < OBSTACLES)
+			if (((rand() % 100) / 10.0) < OBSTACLES)
 				mlx->grid[i][j].obstacle = 1;
 			j++;
 		}
