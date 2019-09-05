@@ -40,7 +40,7 @@ static void init_grid(t_mlx *mlx)
 		while (j < GRID_ROWS)
 		{
 			mlx->grid[i][j].loc = (t_point){i,j};
-			mlx->grid[i][j].neighbors = (t_node**)ft_memalloc(sizeof(t_node*) * 4);
+			mlx->grid[i][j].neighbors = (t_node**)ft_memalloc(sizeof(t_node*) * 8);
 			if ((rand() % 10) < OBSTACLES)
 				mlx->grid[i][j].obstacle = 1;
 			j++;
@@ -70,6 +70,14 @@ static void add_neighbors(t_node **grid)
 				grid[i][j].neighbors[2] = &grid[i][j + 1];
 			if (j > 0 && !grid[i][j - 1].obstacle)
 				grid[i][j].neighbors[3] = &grid[i][j - 1];
+			if (i < GRID_COL - 1 && j > 0 && !grid[i + 1][j - 1].obstacle)
+				grid[i][j].neighbors[4] = &grid[i + 1][j - 1];
+			if (i > 0 && j < GRID_ROWS - 1 && !grid[i - 1][j + 1].obstacle)
+				grid[i][j].neighbors[5] = &grid[i - 1][j + 1];
+			if (i < GRID_COL - 1 && j < GRID_ROWS - 1 && !grid[i + 1][j + 1].obstacle)
+				grid[i][j].neighbors[6] = &grid[i + 1][j + 1];
+			if (i > 0 && j > 0 && !grid[i - 1][j - 1].obstacle)
+				grid[i][j].neighbors[7] = &grid[i - 1][j - 1];
 			j++;
 		}
 		i++;

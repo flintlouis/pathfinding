@@ -11,14 +11,14 @@
 # define KEY_ESC		53
 # define KEY_SPACE		49
 
-# define OBSTACLES		2
+# define OBSTACLES		5
 # define GRID_COL		50
 # define GRID_ROWS		50
 # define HEIGHT			800
 # define WIDTH			800
 # define MEM(x)			(x*)ft_memalloc(sizeof(x))
-# define START			mlx->grid[10][10]
-# define END			mlx->grid[30][42]
+# define START			mlx->grid[5][5]
+# define END			mlx->grid[45][40]
 
 int w;
 int h;
@@ -40,9 +40,9 @@ typedef struct			s_colour
 
 typedef struct			s_node
 {
-	int					f; // f(n) = g(n) + h(n)
-	int					g; // steps taken from start
-	int					h; // estimated distance to end
+	double				f; // f(n) = g(n) + h(n)
+	double				g; // steps taken from start
+	double				h; // estimated distance to end
 	char				obstacle:1;
 	t_point				loc;
 	struct s_node		**neighbors;
@@ -60,6 +60,7 @@ typedef	struct			s_mlx
 	int					size_line;
 	int					endian;
 	char				step:1;
+	char				no_path:1;
 	t_node				**grid;
 	t_node				*openSet;
 	t_node				*closedSet;
