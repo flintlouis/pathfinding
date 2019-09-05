@@ -12,12 +12,16 @@ void	draw_grid(t_mlx *mlx, t_colour c)
 		x = 0;
 		while (x < GRID_COL)
 		{
-			put_square(mlx, (t_point){x*w, y*h}, c);
+			if (mlx->grid[x][y].obstacle)
+				put_square(mlx, (t_point){x*w, y*h}, (t_colour){0,0,0});
+			else if ((START.loc.x == x && START.loc.y == y) || (END.loc.x == x && END.loc.y == y))
+				put_square(mlx, (t_point){x*w, y*h}, (t_colour){c.r>>1,c.g>>1,c.b>>1});
+			else
+				put_square(mlx, (t_point){x*w, y*h}, c);
 			x++;
 		}
 		y++;
 	}
-	put_square(mlx, (t_point){END.loc.x*w,END.loc.y*h}, (t_colour){c.r>>1,c.g>>1,c.b>>1});
 }
 
 void draw_path(t_mlx *mlx, t_node *path, t_colour c)

@@ -16,5 +16,7 @@ int			press_key(int key, t_mlx *mlx)
 {
 	if (key == KEY_ESC)
 		close_window(0);
+	if (key == KEY_SPACE)
+		mlx->step = 1;
 	return (0);
 }

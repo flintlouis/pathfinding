@@ -9,14 +9,16 @@
 # include <unistd.h>
 
 # define KEY_ESC		53
+# define KEY_SPACE		49
 
-# define GRID_COL		25
-# define GRID_ROWS		25
+# define OBSTACLES		2
+# define GRID_COL		50
+# define GRID_ROWS		50
 # define HEIGHT			800
 # define WIDTH			800
 # define MEM(x)			(x*)ft_memalloc(sizeof(x))
-# define START			mlx->grid[0][0]
-# define END			mlx->grid[10][20]
+# define START			mlx->grid[10][10]
+# define END			mlx->grid[30][42]
 
 int w;
 int h;
@@ -36,12 +38,12 @@ typedef struct			s_colour
 	t_byte				b;
 }						t_colour;
 
-
 typedef struct			s_node
 {
 	int					f; // f(n) = g(n) + h(n)
 	int					g; // steps taken from start
 	int					h; // estimated distance to end
+	char				obstacle:1;
 	t_point				loc;
 	struct s_node		**neighbors;
 	struct s_node		*next;
@@ -57,6 +59,7 @@ typedef	struct			s_mlx
 	int					bits_per_pixel;
 	int					size_line;
 	int					endian;
+	char				step:1;
 	t_node				**grid;
 	t_node				*openSet;
 	t_node				*closedSet;

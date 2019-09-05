@@ -1,4 +1,5 @@
 #include "pathfinding.h"
+# include <time.h>
 
 static t_mlx	*init_mlx(void)
 {
@@ -40,10 +41,14 @@ static void init_grid(t_mlx *mlx)
 		{
 			mlx->grid[i][j].loc = (t_point){i,j};
 			mlx->grid[i][j].neighbors = (t_node**)ft_memalloc(sizeof(t_node*) * 4);
+			if ((rand() % 10) < OBSTACLES)
+				mlx->grid[i][j].obstacle = 1;
 			j++;
 		}
 		i++;
 	}
+	START.obstacle = 0;
+	END.obstacle = 0;
 }
 
 static void add_neighbors(t_node **grid)
@@ -52,19 +57,18 @@ static void add_neighbors(t_node **grid)
 	int j;
 
 	i = 0;
-
 	while (i < GRID_COL)
 	{
 		j = 0;
 		while (j < GRID_ROWS)
 		{
-			if (i < GRID_COL - 1)
+			if (i < GRID_COL - 1 && !grid[i + 1][j].obstacle)
 				grid[i][j].neighbors[0] = &grid[i + 1][j];
-			if (i > 0)
+			if (i > 0 && !grid[i - 1][j].obstacle)
 				grid[i][j].neighbors[1] = &grid[i - 1][j];
-			if (j < GRID_ROWS - 1)
+			if (j < GRID_ROWS - 1 && !grid[i][j + 1].obstacle)
 				grid[i][j].neighbors[2] = &grid[i][j + 1];
-			if (j > 0)
+			if (j > 0 && !grid[i][j - 1].obstacle)
 				grid[i][j].neighbors[3] = &grid[i][j - 1];
 			j++;
 		}
@@ -76,6 +80,7 @@ void			setup_pathfinding(void)
 {
 	t_mlx *mlx;
 
+	srand(time(0));
 	w = WIDTH / GRID_COL;
 	h = HEIGHT / GRID_ROWS;
 	mlx = init_mlx();
@@ -83,6 +88,5 @@ void			setup_pathfinding(void)
 	add_neighbors(mlx->grid);
 	mlx->openSet = &START;
 	draw_grid(mlx, (t_colour){200,200,200});
-	draw_set(mlx, mlx->openSet, (t_colour){0,100,0});
 	hook(mlx);
 }
