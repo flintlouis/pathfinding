@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   pathfinding.c                                      :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: fhignett <fhignett@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2019/05/08 17:09:56 by fhignett       #+#    #+#                */
-/*   Updated: 2019/09/05 19:53:49 by flintlouis    ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "pathfinding.h"
 
 static int heuristic(t_node *a, t_node *b)
