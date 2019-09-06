@@ -11,14 +11,14 @@
 # define KEY_ESC		53
 # define KEY_SPACE		49
 
-# define OBSTACLES		5.5
-# define GRID_COL		50
-# define GRID_ROWS		50
+# define OBSTACLES		5
+# define GRID_COL		100
+# define GRID_ROWS		100
 # define HEIGHT			800
 # define WIDTH			800
 # define MEM(x)			(x*)ft_memalloc(sizeof(x))
 # define START			mlx->grid[5][5]
-# define END			mlx->grid[45][40]
+# define END			mlx->grid[95][95]
 
 int w;
 int h;
@@ -81,6 +81,7 @@ long					time_between_frames(void);
 
 void					put_square(t_mlx *mlx, t_point grid, t_colour colour);
 void					setup_pathfinding(void);
+void					draw_start_end(t_mlx *mlx, t_colour c);
 void					draw_grid(t_mlx *mlx, t_colour c);
 void					draw_path(t_mlx *mlx, t_node *path, t_colour c);
 void					draw_set(t_mlx *mlx, t_node *set, t_colour c);

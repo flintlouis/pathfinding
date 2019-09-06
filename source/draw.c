@@ -14,14 +14,18 @@ void	draw_grid(t_mlx *mlx, t_colour c)
 		{
 			if (mlx->grid[x][y].obstacle)
 				put_square(mlx, (t_point){x*w, y*h}, (t_colour){0,0,0});
-			else if ((START.loc.x == x && START.loc.y == y) || (END.loc.x == x && END.loc.y == y))
-				put_square(mlx, (t_point){x*w, y*h}, (t_colour){c.r>>1,c.g>>1,c.b>>1});
 			else
 				put_square(mlx, (t_point){x*w, y*h}, c);
 			x++;
 		}
 		y++;
 	}
+}
+
+void draw_start_end(t_mlx *mlx, t_colour c)
+{
+	put_square(mlx, (t_point){START.loc.x*w, START.loc.y*h}, c);
+	put_square(mlx, (t_point){END.loc.x*w, END.loc.y*h}, c);
 }
 
 void draw_path(t_mlx *mlx, t_node *path, t_colour c)
