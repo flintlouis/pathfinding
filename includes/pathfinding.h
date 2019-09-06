@@ -10,15 +10,16 @@
 
 # define KEY_ESC		53
 # define KEY_SPACE		49
+# define L_MOUSE		1
 
-# define OBSTACLES		5
-# define GRID_COL		100
-# define GRID_ROWS		100
+# define OBSTACLES		4.5
+# define GRID_COL		50
+# define GRID_ROWS		50
 # define HEIGHT			800
 # define WIDTH			800
 # define MEM(x)			(x*)ft_memalloc(sizeof(x))
-# define START			mlx->grid[5][5]
-# define END			mlx->grid[95][95]
+# define START			mlx->grid[2][3]
+# define END			mlx->grid[42][40]
 
 int w;
 int h;
@@ -76,6 +77,8 @@ int						mouse_press(int button, int x, int y, t_mlx *mlx);
 int						mouse_release(int button, int x, int y, t_mlx *mlx);
 int						compare_nodes(t_node *s1, t_node *s2);
 int 					in_set(t_node **set, t_node *node);
+
+double					heuristic(t_node *a, t_node *b);
 
 long					time_between_frames(void);
 

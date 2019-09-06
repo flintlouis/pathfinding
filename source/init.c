@@ -84,6 +84,13 @@ static void add_neighbors(t_node **grid)
 	}
 }
 
+static void init_openSet(t_mlx *mlx)
+{
+	mlx->openSet = &START;
+	mlx->openSet->h = heuristic(&START, &END);
+	mlx->openSet->f = mlx->openSet->h + mlx->openSet->g;
+}
+
 void			setup_pathfinding(void)
 {
 	t_mlx *mlx;
@@ -94,7 +101,8 @@ void			setup_pathfinding(void)
 	mlx = init_mlx();
 	init_grid(mlx);
 	add_neighbors(mlx->grid);
-	mlx->openSet = &START;
+	init_openSet(mlx);
 	draw_grid(mlx, (t_colour){200,200,200});
+	draw_start_end(mlx, (t_colour){46, 149, 168});
 	hook(mlx);
 }

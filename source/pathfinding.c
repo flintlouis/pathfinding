@@ -1,6 +1,6 @@
 #include "pathfinding.h"
 
-static double heuristic(t_node *a, t_node *b)
+double heuristic(t_node *a, t_node *b)
 {
 	double d;
 	double dx;
@@ -82,6 +82,7 @@ static void find_path(t_node **openSet, t_node **closedSet, t_node **path, t_nod
 		ft_putendl("Path found");
 		return ;
 	}
+	*path = node;
 	add_to_openSet(node, openSet, closedSet, end);
 }
 
