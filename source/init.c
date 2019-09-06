@@ -91,6 +91,49 @@ static void init_openSet(t_mlx *mlx)
 	mlx->openSet->f = mlx->openSet->h + mlx->openSet->g;
 }
 
+static void free_grid(t_node **grid)
+{
+	int i;
+	int j;
+	int n;
+
+	i = 0;
+	while (i < GRID_COL)
+	{
+		j = 0;
+		while (j < GRID_ROWS)
+		{
+			grid[i][j].next = NULL;
+			grid[i][j].prev = NULL;
+			n = 0;
+			while (n < 8)
+			{
+				grid[i][j].neighbors[n] = NULL;
+				n++;
+			}
+			free(grid[i][j].neighbors);
+			j++;
+		}
+		free(grid[i]);
+		i++;
+	}
+	free(grid);
+}
+
+void reset_game(t_mlx *mlx)
+{
+	free_grid(mlx->grid);
+	mlx->path = NULL;
+	mlx->openSet = NULL;
+	mlx->closedSet = NULL;
+	init_grid(mlx);
+	add_neighbors(mlx->grid);
+	init_openSet(mlx);
+	system("clear");
+	draw_grid(mlx, (t_colour){200,200,200});
+	draw_start_end(mlx, (t_colour){46, 149, 168});
+}
+
 void			setup_pathfinding(void)
 {
 	t_mlx *mlx;
@@ -98,6 +141,7 @@ void			setup_pathfinding(void)
 	srand(time(0));
 	w = WIDTH / GRID_COL;
 	h = HEIGHT / GRID_ROWS;
+	no_path = 0;
 	mlx = init_mlx();
 	init_grid(mlx);
 	add_neighbors(mlx->grid);

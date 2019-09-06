@@ -44,7 +44,7 @@ static void add_to_openSet(t_node *node, t_node **openSet, t_node **closedSet, t
 	{
 		if (nbs[i] && !in_set(closedSet, nbs[i]))
 		{
-			tmpG = check_diag(nbs[i], node) ? (node->g + 1.4) : (node->g + 1);
+			tmpG = check_diag(nbs[i], node) ? (node->g + 1.41) : (node->g + 1);
 			if (in_set(openSet, nbs[i]))
 			{
 				if (tmpG < nbs[i]->g)
@@ -82,7 +82,6 @@ static void find_path(t_node **openSet, t_node **closedSet, t_node **path, t_nod
 		ft_putendl("Path found");
 		return ;
 	}
-	*path = node;
 	add_to_openSet(node, openSet, closedSet, end);
 }
 
@@ -99,11 +98,11 @@ int			pathfinding(t_mlx *mlx)
 			draw_path(mlx, mlx->path, (t_colour){46, 86, 168});
 			draw_start_end(mlx, (t_colour){46, 149, 168});
 		}
-		else if (!compare_nodes(mlx->path, &END) && !mlx->no_path)
+		else if (!compare_nodes(mlx->path, &END) && !no_path)
 		{
 			system("clear");
 			ft_putendl("No path found");
-			mlx->no_path = 1;
+			no_path = 1;
 		}
 		mlx->step = 0;
 	}

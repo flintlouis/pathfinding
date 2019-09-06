@@ -11,18 +11,20 @@
 # define KEY_ESC		53
 # define KEY_SPACE		49
 # define L_MOUSE		1
+# define KEY_R			15
 
 # define OBSTACLES		4.5
-# define GRID_COL		50
-# define GRID_ROWS		50
+# define GRID_COL		100 /* Check that START/END still are possible */
+# define GRID_ROWS		100 /* Check that START/END still are possible */
 # define HEIGHT			800
 # define WIDTH			800
 # define MEM(x)			(x*)ft_memalloc(sizeof(x))
-# define START			mlx->grid[2][3]
-# define END			mlx->grid[42][40]
+# define START			mlx->grid[5][5]
+# define END			mlx->grid[90][90]
 
 int w;
 int h;
+int no_path;
 
 typedef unsigned char	t_byte;
 
@@ -61,7 +63,6 @@ typedef	struct			s_mlx
 	int					size_line;
 	int					endian;
 	char				step:1;
-	char				no_path:1;
 	t_node				**grid;
 	t_node				*openSet;
 	t_node				*closedSet;
@@ -82,6 +83,7 @@ double					heuristic(t_node *a, t_node *b);
 
 long					time_between_frames(void);
 
+void					reset_game(t_mlx *mlx);
 void					put_square(t_mlx *mlx, t_point grid, t_colour colour);
 void					setup_pathfinding(void);
 void					draw_start_end(t_mlx *mlx, t_colour c);
