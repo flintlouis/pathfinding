@@ -141,7 +141,6 @@ void			setup_pathfinding(void)
 	srand(time(0));
 	w = WIDTH / GRID_COL;
 	h = HEIGHT / GRID_ROWS;
-	no_path = 0;
 	mlx = init_mlx();
 	init_grid(mlx);
 	add_neighbors(mlx->grid);

@@ -82,12 +82,14 @@ static void find_path(t_node **openSet, t_node **closedSet, t_node **path, t_nod
 		ft_putendl("Path found");
 		return ;
 	}
+	*path = node;
 	add_to_openSet(node, openSet, closedSet, end);
 }
 
 int			pathfinding(t_mlx *mlx)
 {
-	mlx->step = 1; /* Turn off to go step by step with spacebar */
+	if (!mlx->pause)
+		mlx->step = 1; /* Turn off to go step by step with spacebar */
 	if (mlx->step)
 	{
 		if (mlx->openSet && !compare_nodes(mlx->path, &END))
@@ -98,11 +100,11 @@ int			pathfinding(t_mlx *mlx)
 			draw_path(mlx, mlx->path, (t_colour){46, 86, 168});
 			draw_start_end(mlx, (t_colour){46, 149, 168});
 		}
-		else if (!compare_nodes(mlx->path, &END) && !no_path)
+		else if (!compare_nodes(mlx->path, &END) && !mlx->no_path)
 		{
 			system("clear");
 			ft_putendl("No path found");
-			no_path = 1;
+			mlx->no_path = 1;
 		}
 		mlx->step = 0;
 	}

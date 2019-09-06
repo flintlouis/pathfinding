@@ -11,6 +11,8 @@ int			release_key(int key, t_mlx *mlx)
 {
 	if (key == KEY_R)
 		reset_game(mlx);
+	else if (key == KEY_P)
+		mlx->pause = mlx->pause ? 0 : 1;
 	return (0);
 }
 

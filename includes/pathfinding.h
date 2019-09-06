@@ -12,8 +12,9 @@
 # define KEY_SPACE		49
 # define L_MOUSE		1
 # define KEY_R			15
+# define KEY_P			35
 
-# define OBSTACLES		4.5
+# define OBSTACLES		4
 # define GRID_COL		100 /* Check that START/END still are possible */
 # define GRID_ROWS		100 /* Check that START/END still are possible */
 # define HEIGHT			800
@@ -24,7 +25,6 @@
 
 int w;
 int h;
-int no_path;
 
 typedef unsigned char	t_byte;
 
@@ -63,6 +63,8 @@ typedef	struct			s_mlx
 	int					size_line;
 	int					endian;
 	char				step:1;
+	char				pause:1;
+	char				no_path:1;
 	t_node				**grid;
 	t_node				*openSet;
 	t_node				*closedSet;
