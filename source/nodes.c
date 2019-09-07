@@ -29,17 +29,10 @@ void add_node(t_node **set, t_node *node)
 {
 	t_node *tmp;
 
-	if (!node)
+	if (!node || !set)
 		return ;
-	if (!*set)
-	{
-		*set = node;
-		return ;
-	}
-	tmp = *set;
-	while (tmp->next)
-		tmp = tmp->next;
-	tmp->next = node;
+	node->next = *set;
+	*set = node;
 }
 
 void rm_node(t_node **set, t_node *node)

@@ -89,9 +89,10 @@ static void find_path(t_node **openSet, t_node **closedSet, t_node **path, t_nod
 int			pathfinding(t_mlx *mlx)
 {
 	if (!mlx->pause)
-		mlx->step = 1; /* Turn off to go step by step with spacebar */
+		mlx->step = 1;
 	if (mlx->step)
 	{
+		mlx->step = 0;
 		if (mlx->openSet && !compare_nodes(mlx->path, &END))
 		{
 			find_path(&mlx->openSet, &mlx->closedSet, &mlx->path, &END);
@@ -106,8 +107,9 @@ int			pathfinding(t_mlx *mlx)
 			ft_putendl("No path found");
 			mlx->no_path = 1;
 		}
-		mlx->step = 0;
 	}
+	// if (mlx->no_path)
+	// 	reset_game(mlx);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->image, 0, 0);
 	return (0);
 }

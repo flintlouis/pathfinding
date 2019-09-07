@@ -129,6 +129,9 @@ void reset_game(t_mlx *mlx)
 	init_grid(mlx);
 	add_neighbors(mlx->grid);
 	init_openSet(mlx);
+	mlx->no_path = 0;
+	mlx->pause = 0;
+	mlx->step = 0;
 	system("clear");
 	draw_grid(mlx, (t_colour){200,200,200});
 	draw_start_end(mlx, (t_colour){46, 149, 168});
