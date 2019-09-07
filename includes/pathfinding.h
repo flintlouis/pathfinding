@@ -14,13 +14,13 @@
 # define KEY_R			15
 # define KEY_P			35
 
-# define OBSTACLES		5
+# define OBSTACLES		6
 # define GRID_COL		100 /* Check that START/END still are possible */
 # define GRID_ROWS		100 /* Check that START/END still are possible */
 # define HEIGHT			800
 # define WIDTH			1000
 # define MEM(x)			(x*)ft_memalloc(sizeof(x))
-# define START			mlx->grid[50][10]
+# define START			mlx->grid[20][10]
 # define END			mlx->grid[70][70]
 
 int w;

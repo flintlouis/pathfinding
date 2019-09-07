@@ -120,21 +120,26 @@ static void free_grid(t_node **grid)
 	free(grid);
 }
 
+static void init_pathfinding(t_mlx *mlx)
+{
+	init_grid(mlx);
+	add_neighbors(mlx->grid);
+	init_openSet(mlx);
+	draw_grid(mlx, (t_colour){200,200,200});
+	draw_start_end(mlx, (t_colour){46, 149, 168});
+}
+
 void reset_game(t_mlx *mlx)
 {
 	free_grid(mlx->grid);
 	mlx->path = NULL;
 	mlx->openSet = NULL;
 	mlx->closedSet = NULL;
-	init_grid(mlx);
-	add_neighbors(mlx->grid);
-	init_openSet(mlx);
 	mlx->no_path = 0;
 	mlx->pause = 0;
 	mlx->step = 0;
 	system("clear");
-	draw_grid(mlx, (t_colour){200,200,200});
-	draw_start_end(mlx, (t_colour){46, 149, 168});
+	init_pathfinding(mlx);
 }
 
 void			setup_pathfinding(void)
@@ -145,10 +150,6 @@ void			setup_pathfinding(void)
 	w = WIDTH / GRID_COL;
 	h = HEIGHT / GRID_ROWS;
 	mlx = init_mlx();
-	init_grid(mlx);
-	add_neighbors(mlx->grid);
-	init_openSet(mlx);
-	draw_grid(mlx, (t_colour){200,200,200});
-	draw_start_end(mlx, (t_colour){46, 149, 168});
+	init_pathfinding(mlx);
 	hook(mlx);
 }

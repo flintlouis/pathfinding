@@ -108,8 +108,8 @@ int			pathfinding(t_mlx *mlx)
 			mlx->no_path = 1;
 		}
 	}
-	// if (mlx->no_path)
-	// 	reset_game(mlx);
+	if (mlx->no_path)
+		reset_game(mlx);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->image, 0, 0);
 	return (0);
 }

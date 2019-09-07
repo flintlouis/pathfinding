@@ -27,8 +27,6 @@ int in_set(t_node **set, t_node *node)
 
 void add_node(t_node **set, t_node *node)
 {
-	t_node *tmp;
-
 	if (!node || !set)
 		return ;
 	node->next = *set;
