@@ -38,7 +38,7 @@ void rm_node(t_node **set, t_node *node)
 	t_node *tmp;
 	t_node *ph;
 
-	if (!*set || !node)
+	if (!*set || !set || !node)
 		return ;
 	tmp = *set;
 	if (compare_nodes(tmp, node))
