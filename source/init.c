@@ -214,13 +214,15 @@ static void		load_grid_info(t_mlx *mlx)
 	mlx->saved->height = ft_atoi(line);
 	free(line);
 	mlx->saved->grid = (int**)ft_memalloc(sizeof(int*) * mlx->saved->height);
-	for (int x = 0; x < mlx->saved->width; x++) {
+	ft_putendl("debug1");
+	for (int x = 0; x < mlx->saved->height; x++) {
 		ft_get_next_line(fd, &line);
-		mlx->saved->grid[x] = (int*)ft_memalloc(sizeof(int) * mlx->saved->height);		
-		for (int y = 0; y < mlx->saved->height; y++)
+		mlx->saved->grid[x] = (int*)ft_memalloc(sizeof(int) * mlx->saved->width);
+		for (int y = 0; y < mlx->saved->width; y++)
 			mlx->saved->grid[x][y] = line[y] - 48;
 		free(line);
 	}
+	ft_putendl("debug2");
 	close(fd);
 }
 

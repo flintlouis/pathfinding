@@ -18,11 +18,11 @@
 # define OBSTACLES		5
 # define GRID_COL		100 /* Check that START/END still are possible */
 # define GRID_ROWS		100 /* Check that START/END still are possible */
-# define HEIGHT			800
 # define WIDTH			1000
+# define HEIGHT			800
 # define MEM(x)			(x*)ft_memalloc(sizeof(x))
-# define START			mlx->grid[0][0]
-# define END			mlx->grid[GRID_COL-1][GRID_ROWS-1]
+# define START			mlx->grid[20][15]
+# define END			mlx->grid[90][80]
 
 int w;
 int h;

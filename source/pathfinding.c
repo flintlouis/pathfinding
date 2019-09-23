@@ -6,10 +6,10 @@ double heuristic(t_node *a, t_node *b)
 	double dx;
 	double dy;
 
-	dx = (double)b->loc.x - a->loc.x;
-	dy = (double)b->loc.y - a->loc.y;
-	d = sqrt(((dx*dx)+(dy*dy))); /* Euclidian distance */
-	// d = abs(a->loc.x - b->loc.x) + abs(a->loc.y - b->loc.y); /* Taxi distance */
+	// dx = (double)b->loc.x - a->loc.x;
+	// dy = (double)b->loc.y - a->loc.y;
+	// d = sqrt(((dx*dx)+(dy*dy))); /* Euclidian distance */
+	d = abs(a->loc.x - b->loc.x) + abs(a->loc.y - b->loc.y); /* Taxi distance */
 	return (d);
 }
 
