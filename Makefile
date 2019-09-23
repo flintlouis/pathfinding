@@ -12,7 +12,7 @@ all: $(NAME)
 $(NAME):
 	@echo "Compiling..."
 	@make -C ft_libft
-	@gcc -o $(NAME) $(SOURCE) $(LIB) $(INCL) $(FRAMEWORK)
+	@gcc -o $(NAME) $(SOURCE) $(LIB) $(INCL) $(FRAMEWORK) -O3
 	@make clean
 	@echo "Done"
 

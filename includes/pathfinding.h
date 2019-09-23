@@ -7,6 +7,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <fcntl.h>
 
 # define KEY_ESC		53
 # define KEY_SPACE		49
@@ -14,14 +15,14 @@
 # define KEY_R			15
 # define KEY_P			35
 
-# define OBSTACLES		6
+# define OBSTACLES		5
 # define GRID_COL		100 /* Check that START/END still are possible */
 # define GRID_ROWS		100 /* Check that START/END still are possible */
 # define HEIGHT			800
 # define WIDTH			1000
 # define MEM(x)			(x*)ft_memalloc(sizeof(x))
-# define START			mlx->grid[20][10]
-# define END			mlx->grid[70][70]
+# define START			mlx->grid[0][0]
+# define END			mlx->grid[GRID_COL-1][GRID_ROWS-1]
 
 int w;
 int h;
@@ -53,6 +54,13 @@ typedef struct			s_node
 	struct s_node		*prev;
 }						t_node;
 
+typedef	struct			s_saved
+{
+	int					**grid;
+	int					width;
+	int					height;
+}						t_saved;
+
 typedef	struct			s_mlx
 {
 	void				*mlx;
@@ -62,9 +70,12 @@ typedef	struct			s_mlx
 	int					bits_per_pixel;
 	int					size_line;
 	int					endian;
+	char				*file;
+	char				*cmd;
 	char				step:1;
 	char				pause:1;
 	char				no_path:1;
+	t_saved				*saved;
 	t_node				**grid;
 	t_node				*openSet;
 	t_node				*closedSet;
@@ -87,7 +98,7 @@ long					time_between_frames(void);
 
 void					reset_game(t_mlx *mlx);
 void					put_square(t_mlx *mlx, t_point grid, t_colour colour);
-void					setup_pathfinding(void);
+void					setup_pathfinding(int argc, char **argv);
 void					draw_start_end(t_mlx *mlx, t_colour c);
 void					draw_grid(t_mlx *mlx, t_colour c);
 void					draw_path(t_mlx *mlx, t_node *path, t_colour c);

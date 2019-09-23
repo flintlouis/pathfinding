@@ -3,6 +3,6 @@
 int		main(int argc, char **argv)
 {
 	system("clear");
-	setup_pathfinding();
+	setup_pathfinding(argc, argv);
 	return (0);
 }
