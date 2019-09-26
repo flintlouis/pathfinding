@@ -6,10 +6,10 @@ double heuristic(t_node *a, t_node *b)
 	double dx;
 	double dy;
 
-	// dx = (double)b->loc.x - a->loc.x;
-	// dy = (double)b->loc.y - a->loc.y;
-	// d = sqrt(((dx*dx)+(dy*dy))); /* Euclidian distance */
-	d = abs(a->loc.x - b->loc.x) + abs(a->loc.y - b->loc.y); /* Taxi distance */
+	dx = (double)b->loc.x - a->loc.x;
+	dy = (double)b->loc.y - a->loc.y;
+	d = sqrt(((dx*dx)+(dy*dy))); /* Euclidian distance */
+	// d = abs(a->loc.x - b->loc.x) + abs(a->loc.y - b->loc.y); /* Taxi distance */
 	return (d);
 }
 
@@ -93,15 +93,15 @@ int			pathfinding(t_mlx *mlx)
 	if (mlx->step)
 	{
 		mlx->step = 0;
-		if (mlx->openSet && !compare_nodes(mlx->path, &END))
+		if (mlx->openSet && !compare_nodes(mlx->path, end))
 		{
-			find_path(&mlx->openSet, &mlx->closedSet, &mlx->path, &END);
+			find_path(&mlx->openSet, &mlx->closedSet, &mlx->path, end);
 			draw_set(mlx, mlx->openSet, (t_colour){218, 247, 166});
 			draw_set(mlx, mlx->closedSet, (t_colour){144, 12, 63});
 			draw_path(mlx, mlx->path, (t_colour){46, 86, 168});
 			draw_start_end(mlx, (t_colour){46, 149, 168});
 		}
-		else if (!compare_nodes(mlx->path, &END) && !mlx->no_path)
+		else if (!compare_nodes(mlx->path, end) && !mlx->no_path)
 		{
 			system("clear");
 			ft_putendl("No path found");

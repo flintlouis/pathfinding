@@ -14,18 +14,17 @@
 # define L_MOUSE		1
 # define KEY_R			15
 # define KEY_P			35
+# define S				mlx->saved->s
+# define E				mlx->saved->e
 
-# define OBSTACLES		5
+# define OBSTACLES		6
 # define GRID_COL		100 /* Check that START/END still are possible */
 # define GRID_ROWS		100 /* Check that START/END still are possible */
 # define WIDTH			1000
 # define HEIGHT			800
 # define MEM(x)			(x*)ft_memalloc(sizeof(x))
-# define START			mlx->grid[20][15]
-# define END			mlx->grid[90][80]
-
-int w;
-int h;
+# define START			(t_point){23,16}
+# define END			(t_point){91,82}
 
 typedef unsigned char	t_byte;
 
@@ -59,6 +58,8 @@ typedef	struct			s_saved
 	int					**grid;
 	int					width;
 	int					height;
+	t_point				s;
+	t_point				e;
 }						t_saved;
 
 typedef	struct			s_mlx
@@ -81,6 +82,11 @@ typedef	struct			s_mlx
 	t_node				*closedSet;
 	t_node				*path;
 }						t_mlx;
+
+int 					w;
+int 					h;
+t_node					*start;
+t_node					*end;
 
 int						pathfinding(t_mlx *mlx);
 int						close_window(void *ptr);
@@ -105,5 +111,9 @@ void					draw_path(t_mlx *mlx, t_node *path, t_colour c);
 void					draw_set(t_mlx *mlx, t_node *set, t_colour c);
 void					add_node(t_node **set, t_node *node);
 void					rm_node(t_node **set, t_node *node);
+void					save_grid(t_mlx *mlx);
+void					load_grid(t_mlx *mlx);
+void					generate_grid(t_mlx *mlx);
+void					load_grid_info(t_mlx *mlx);
 
 #endif
