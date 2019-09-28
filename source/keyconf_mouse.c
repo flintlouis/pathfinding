@@ -1,10 +1,5 @@
 #include "pathfinding.h"
 
-int				mouse_move(int x, int y, t_mlx *mlx)
-{
-	return (0);
-}
-
 static t_node *search_node(t_mlx *mlx, int x, int y)
 {
 	t_node *open;
@@ -56,10 +51,5 @@ int				mouse_press(int button, int x, int y, t_mlx *mlx)
 {
 	if (button == L_MOUSE)
 		get_node_info(mlx, x, y);
-	return (0);
-}
-
-int				mouse_release(int button, int x, int y, t_mlx *mlx)
-{
 	return (0);
 }

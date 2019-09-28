@@ -18,8 +18,6 @@ static void		hook(t_mlx *mlx)
 {
 	mlx_loop_hook(mlx->mlx, pathfinding, mlx);
 	mlx_hook(mlx->win, 4, 1L << 2, mouse_press, mlx);
-	mlx_hook(mlx->win, 5, 1L << 3, mouse_release, mlx);
-	mlx_hook(mlx->win, 6, 1L << 6, mouse_move, mlx);
 	mlx_hook(mlx->win, 2, 1L << 0, press_key, mlx);
 	mlx_hook(mlx->win, 3, 1L << 1, release_key, mlx);
 	mlx_hook(mlx->win, 17, 1L << 17, close_window, NULL);

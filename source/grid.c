@@ -68,7 +68,6 @@ void		save_grid(t_mlx *mlx)
 
 void 		load_grid(t_mlx *mlx)
 {
-	char	*line;
 	int		i;
 	int		j;
 

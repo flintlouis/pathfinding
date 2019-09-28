@@ -92,9 +92,7 @@ int						pathfinding(t_mlx *mlx);
 int						close_window(void *ptr);
 int						release_key(int key, t_mlx *mlx);
 int						press_key(int key, t_mlx *mlx);
-int						mouse_move(int x, int y, t_mlx *mlx);
 int						mouse_press(int button, int x, int y, t_mlx *mlx);
-int						mouse_release(int button, int x, int y, t_mlx *mlx);
 int						compare_nodes(t_node *s1, t_node *s2);
 int 					in_set(t_node **set, t_node *node);
 
