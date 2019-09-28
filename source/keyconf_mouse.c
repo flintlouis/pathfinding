@@ -1,30 +1,5 @@
 #include "pathfinding.h"
 
-static t_node *search_node(t_mlx *mlx, int x, int y)
-{
-	t_node *open;
-	t_node *closed;
-
-	open = mlx->openSet;
-	closed = mlx->closedSet;
-	while (open || closed)
-	{
-		if (open && open->loc.x == x && open->loc.y == y) {
-			ft_putendl("OpenSet:");
-			return (open);
-		}
-		else if (closed && closed->loc.x == x && closed->loc.y == y) {
-			ft_putendl("ClosedSet:");
-			return (closed);
-		}
-		if (open)
-			open = open->next;
-		if (closed)
-			closed = closed->next;
-	}
-	return (NULL);
-}
-
 static void get_node_info(t_mlx *mlx, int x, int y)
 {
 	int i;
@@ -34,16 +9,37 @@ static void get_node_info(t_mlx *mlx, int x, int y)
 	i = x / w;
 	j = y / h;
 	system("clear");
-	node = search_node(mlx, i, j);
-	if (!node)
-		ft_putendl("No Set");
-	else {
-		printf("Loc  : (%d, %d)\nF    : %.2f\nG    : %.2f\nH    : %.2f\n",
-		node->loc.x, node->loc.y, node->f, node->g, node->h);
-		if (node->prev)
-			printf("Prev : (%d, %d)\n", node->prev->loc.x, node->prev->loc.y);
-		else
-			ft_putendl("Prev : (NULL)");
+	node = &mlx->grid[i][j];
+	printf("Loc  : (%d, %d)\nF    : %.2f\nG    : %.2f\nH    : %.2f\n",
+	node->loc.x, node->loc.y, node->f, node->g, node->h);
+	if (node->prev)
+		printf("Prev : (%d, %d)\n", node->prev->loc.x, node->prev->loc.y);
+	else
+		ft_putendl("Prev : (NULL)");
+	for (int n = 0; n < 8; n++) {
+		if (!node->neighbors[n])
+			ft_putendl("NULL");
+		else {
+			switch (n) {
+				case 0: ft_putstr("Recths");
+					break ;
+				case 1: ft_putstr("Links");
+					break ;
+				case 2: ft_putstr("Onder");
+					break ;
+				case 3: ft_putstr("Boven");
+					break ;
+				case 4: ft_putstr("Rechts boven");
+					break ;
+				case 5: ft_putstr("Links onder");
+					break ;
+				case 6: ft_putstr("Rechts onder");
+					break ;
+				default: ft_putstr("Links boven");
+			}
+			t_point loc = node->neighbors[n]->loc;
+			printf(" (%d, %d)\n", loc.x, loc.y);
+		}
 	}
 }
 

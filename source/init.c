@@ -24,6 +24,18 @@ static void		hook(t_mlx *mlx)
 	mlx_loop(mlx->mlx);
 }
 
+static void 	add_diag_neighbors(t_node **grid, int i, int j)
+{
+	if (i < GRID_COL - 1 && j > 0)
+		grid[i][j].neighbors[4] = &grid[i + 1][j - 1];
+	if (i > 0 && j < GRID_ROWS - 1)
+		grid[i][j].neighbors[5] = &grid[i - 1][j + 1];
+	if (i < GRID_COL - 1 && j < GRID_ROWS - 1)
+		grid[i][j].neighbors[6] = &grid[i + 1][j + 1];
+	if (i > 0 && j > 0)
+		grid[i][j].neighbors[7] = &grid[i - 1][j - 1];
+}
+
 static void 	add_neighbors(t_node **grid)
 {
 	int i;
@@ -35,22 +47,15 @@ static void 	add_neighbors(t_node **grid)
 		j = 0;
 		while (j < GRID_ROWS)
 		{
-			if (i < GRID_COL - 1)// && !grid[i + 1][j].obstacle)
+			if (i < GRID_COL - 1)
 				grid[i][j].neighbors[0] = &grid[i + 1][j];
-			if (i > 0)// && !grid[i - 1][j].obstacle)
+			if (i > 0)
 				grid[i][j].neighbors[1] = &grid[i - 1][j];
-			if (j < GRID_ROWS - 1)// && !grid[i][j + 1].obstacle)
+			if (j < GRID_ROWS - 1)
 				grid[i][j].neighbors[2] = &grid[i][j + 1];
-			if (j > 0)// && !grid[i][j - 1].obstacle)
+			if (j > 0)
 				grid[i][j].neighbors[3] = &grid[i][j - 1];
-			if (i < GRID_COL - 1 && j > 0)// && !grid[i + 1][j - 1].obstacle)
-				grid[i][j].neighbors[4] = &grid[i + 1][j - 1];
-			if (i > 0 && j < GRID_ROWS - 1)// && !grid[i - 1][j + 1].obstacle)
-				grid[i][j].neighbors[5] = &grid[i - 1][j + 1];
-			if (i < GRID_COL - 1 && j < GRID_ROWS - 1)// && !grid[i + 1][j + 1].obstacle)
-				grid[i][j].neighbors[6] = &grid[i + 1][j + 1];
-			if (i > 0 && j > 0)// && !grid[i - 1][j - 1].obstacle)
-				grid[i][j].neighbors[7] = &grid[i - 1][j - 1];
+			add_diag_neighbors(grid, i, j);
 			j++;
 		}
 		i++;
