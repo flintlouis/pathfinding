@@ -14,7 +14,7 @@ FLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
-$(NAME):  .objects $(OFILES) ft_libft/libft.a
+$(NAME): .objects $(OFILES) ft_libft/libft.a
 	@gcc -o $(NAME) $(OFILES) $(LIB) $(INCL) $(FRAMEWORK) $(FLAGS) -O3
 	@echo "$(YELLOW)√$(WHITE)"
 

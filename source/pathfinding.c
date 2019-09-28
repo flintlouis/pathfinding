@@ -42,7 +42,7 @@ static void add_to_openSet(t_node *node, t_node **openSet, t_node **closedSet, t
 
 	while (i < 8)
 	{
-		if (nbs[i] && !in_set(closedSet, nbs[i]))
+		if (nbs[i] && !nbs[i]->obstacle && !in_set(closedSet, nbs[i]))
 		{
 			tmpG = check_diag(nbs[i], node) ? (node->g + 1.41) : (node->g + 1);
 			if (in_set(openSet, nbs[i]))
