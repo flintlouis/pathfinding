@@ -16,31 +16,6 @@ static void get_node_info(t_mlx *mlx, int x, int y)
 		printf("Prev : (%d, %d)\n", node->prev->loc.x, node->prev->loc.y);
 	else
 		ft_putendl("Prev : (NULL)");
-	for (int n = 0; n < 8; n++) {
-		if (!node->neighbors[n])
-			ft_putendl("NULL");
-		else {
-			switch (n) {
-				case 0: ft_putstr("Recths");
-					break ;
-				case 1: ft_putstr("Links");
-					break ;
-				case 2: ft_putstr("Onder");
-					break ;
-				case 3: ft_putstr("Boven");
-					break ;
-				case 4: ft_putstr("Rechts boven");
-					break ;
-				case 5: ft_putstr("Links onder");
-					break ;
-				case 6: ft_putstr("Rechts onder");
-					break ;
-				default: ft_putstr("Links boven");
-			}
-			t_point loc = node->neighbors[n]->loc;
-			printf(" (%d, %d)\n", loc.x, loc.y);
-		}
-	}
 }
 
 int				mouse_press(int button, int x, int y, t_mlx *mlx)
