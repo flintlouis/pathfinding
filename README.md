@@ -18,3 +18,5 @@ Change these variables in includes/pathfinding.h to:
   COL/ROWS  - change the amount of nodes in the grid.
 
   WIDTH/HEIGHT - size of window.
+
+<iframe src='https://gfycat.com/ifr/EllipticalFarawayGallinule' frameborder='0' scrolling='no' allowfullscreen width='640' height='555'></iframe>
