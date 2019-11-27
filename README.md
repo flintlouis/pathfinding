@@ -18,5 +18,3 @@ Change these variables in includes/pathfinding.h to:
   COL/ROWS  - change the amount of nodes in the grid.
 
   WIDTH/HEIGHT - size of window.
-
-https://gfycat.com/ellipticalfarawaygallinule
