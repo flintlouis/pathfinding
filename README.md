@@ -19,3 +19,4 @@ Change these variables in includes/pathfinding.h to:
 
   WIDTH/HEIGHT - size of window.
 
+https://gfycat.com/ellipticalfarawaygallinule
