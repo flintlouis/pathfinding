@@ -17,7 +17,7 @@
 # define S				mlx->saved->s
 # define E				mlx->saved->e
 
-# define OBSTACLES		6
+# define OBSTACLES		5.5
 # define GRID_COL		100 /* Check that START/END still are possible */
 # define GRID_ROWS		100 /* Check that START/END still are possible */
 # define WIDTH			1000
