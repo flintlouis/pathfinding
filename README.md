@@ -1,7 +1,7 @@
 # A* pathfinding
 Visualization for A* pathfinding
 
-![](A_Pathfinding.gif)
+![](A*Pathfinding.mp4)
 
 Type 'make' to compile the binary.
 
