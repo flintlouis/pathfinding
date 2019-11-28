@@ -1,6 +1,8 @@
 # A* pathfinding
 Visualization for A* pathfinding
 
+![](A_Pathfinding.gif)
+
 Type 'make' to compile the binary.
 
 Execute binary ./pathfinding without options to generate a random grid.
