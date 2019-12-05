@@ -37,4 +37,6 @@ fclean: clean
 	@make fclean -C ft_libft
 	@echo "$(RED)Cleaning...$(WHITE)"
 
-re: fclean all
+re: 
+	@$(MAKE) fclean
+	@$(MAKE) all
