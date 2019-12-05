@@ -37,7 +37,7 @@ void		save_grid(t_mlx *mlx)
 {
 	char *size;
 	size_t len;
-	int fd = open(mlx->file, O_RDWR | O_CREAT);
+	int fd = open(mlx->file, O_RDWR | O_CREAT, 0666);
 
 	size = ft_itoa(GRID_COL);
 	len = ft_strlen(size);
